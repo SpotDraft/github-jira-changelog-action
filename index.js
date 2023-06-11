@@ -65,7 +65,7 @@ Pending Approval
 
 function generateReleaseVersionName() {
   const hasVersion = process.env.VERSION;
-  if (hasVersion) {
+  if (typeof hasVersion !== 'undefined' && hasVersion !== '') {
     return process.env.VERSION;
   } else {
     const haikunator = new Haikunator();
@@ -136,13 +136,13 @@ async function main() {
     console.log('Found following commit logs:');
     console.log(commitLogs);
 
-    // console.log('Generating release version');
-    // const release = generateReleaseVersionName();
-    // console.log(`Release: ${release}`);
+    console.log('Generating release version');
+    const release = generateReleaseVersionName();
+    console.log(`Release: ${release}`);
 
     console.log('Generating Jira changelog from commit logs');
-    //const changelog = await jira.generate(commitLogs, release);
-    const changelog = await jira.generate(commitLogs);
+    const changelog = await jira.generate(commitLogs, release);
+    //const changelog = await jira.generate(commitLogs);
     console.log('Changelog entry:');
     console.log(changelog);
 
