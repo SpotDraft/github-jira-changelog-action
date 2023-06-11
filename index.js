@@ -141,7 +141,8 @@ async function main() {
     // console.log(`Release: ${release}`);
 
     console.log('Generating Jira changelog from commit logs');
-    const changelog = await jira.generate(commitLogs, release);
+    //const changelog = await jira.generate(commitLogs, release);
+    const changelog = await jira.generate(commitLogs);
     console.log('Changelog entry:');
     console.log(changelog);
 
