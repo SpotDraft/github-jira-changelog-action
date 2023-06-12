@@ -65,7 +65,7 @@ Pending Approval
 
 function generateReleaseVersionName() {
   const hasVersion = process.env.VERSION;
-  if (typeof hasVersion !== 'undefined' && hasVersion !== '') {
+  if (hasVersion) {
     return process.env.VERSION;
   } else {
     const haikunator = new Haikunator();
