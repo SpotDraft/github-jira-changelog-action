@@ -145,7 +145,7 @@ async function main() {
     const changelog = await jira.generate(commitLogs, release);
     if (changelog.errors) {
       const jiraError = changelog.errors[0];
-      if (jiraError.statusCode === 404) {
+      if (jiraError.statusCode == 404) {
         console.error(`Jira Ticket Not Found: ${jiraError.message}`);
       } else {
         throw new Error(`Jira API Error: ${JSON.stringify(changelog.errors)}`);
