@@ -143,6 +143,15 @@ async function main() {
 
     console.log('Generating Jira changelog from commit logs');
     const changelog = await jira.generate(commitLogs, release);
+    console.log(`Jira Ticket Not Found: ${JSON.stringify(changelog.errors)}`);
+    // if (changelog.errors) {
+    //   const jiraError = changelog.errors[0];
+    //   if (jiraError.statusCode === 404) {
+    //     console.log(`Jira Ticket Not Found: ${jiraError.message}`);
+    //   } else {
+    //     throw new Error(`Jira API Error: ${JSON.stringify(changelog.errors)}`);
+    //   }
+    // }
     console.log('Changelog entry:');
     console.log(changelog);
 
